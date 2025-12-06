@@ -26,3 +26,6 @@ specsDropdown.addEventListener("click", () => {
   specsContent.classList.toggle("hidden");
   specsArrow.textContent = specsContent.classList.contains("hidden") ? "▼" : "▲";
 });
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof updateCartCount === "function") updateCartCount();
+});

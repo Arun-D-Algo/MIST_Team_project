@@ -1,3 +1,14 @@
+// the below functions helps me keep a global variable to maintain cart logic, thankyou
+function getCart() {
+    return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+let cartCounter = 1;
+
 function Product(id, name,category,fabricType,gender,colour,size, price, description, imageUrl) {
     this.id = id;
     this.name = name;
@@ -10,7 +21,35 @@ function Product(id, name,category,fabricType,gender,colour,size, price, descrip
     this.description = description;
     this.imageUrl = imageUrl;
 }
- 
+
+//for init load of existing qty
+function initCartQuantity(product) {
+    let cart = getCart();
+    let existing = cart.find(item => item.id === product.id);
+    if (existing) {
+        cartCounter = existing.quantity;
+        document.getElementById("add-to-cart").style.backgroundColor = "green";
+        updateCartButton(product);  // Render buttons if already in cart
+    }
+    updateCartCount();  // Show/hide badge
+}
+
+//when you make a change the number changes
+function updateCartCount() {
+    let cart = getCart();
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    let countEl = document.getElementById("cart-count");
+    if (countEl) {
+        if (totalItems > 0) {
+            // show plain number on the navbar badge (no "(x items)")
+            countEl.textContent = `${totalItems}`;
+            countEl.classList.remove('hidden');
+        } else {
+            countEl.textContent = '';
+            countEl.classList.add('hidden');
+        }
+    }
+}
 
 // Function to display product details on the product page
 function displayProduct(product) {
@@ -28,55 +67,82 @@ function displayProduct(product) {
 }
 
 
-let cartCounter = 1;
+
+
 
 function addToCart(product){
-    document.getElementById("add-to-cart").onclick = function(){
+    const addBtn = document.getElementById("add-to-cart");
+    // replace addEventListener with onclick so we don't stack handlers
+    addBtn.onclick = function(e) {
+        e.preventDefault();
         document.getElementById("add-to-cart").style.backgroundColor = "green";
+        let cart = getCart();
+        let existing = cart.find(item => item.id === product.id);
+        cartCounter = existing ? existing.quantity + 1 : 1;
+        if (existing) {
+            existing.quantity = cartCounter;
+        } else {
+            cart.push({...product, quantity: cartCounter});
+        }
+        saveCart(cart);
         updateCartButton(product);
-        document.getElementById("cart-count").innerText = `View Cart (${cartCounter} items)`;
+        updateCartCount();
     };
 }
 
 function updateCartButton(product){
-    document.getElementById("add-to-cart").innerHTML = `
-        <button id="minus" button class = "px-4 ">-</button>
+    const addBtn = document.getElementById("add-to-cart");
+    addBtn.innerHTML = `
+        <button id="minus" class = "px-4 ">-</button>
         <span>${cartCounter}</span>
-        <button id="plus" button class = "px-4">+</button>
+        <button id="plus" class = "px-4">+</button>
     `;
+    addBtn.onclick = function(e) {
+        if (e.target.id === 'plus') {
+            cartCounter++;
+            let cart = getCart();
+            let existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                existing.quantity = cartCounter;
+            } else {
+                cart.push({...product, quantity: cartCounter});
+            }
+            saveCart(cart);
+            updateCartCount();
+            updateCartButton(product);  // firse render karo
+        } else if (e.target.id === 'minus') {
+            if (cartCounter >= 1){
+                cartCounter--;
+                let cart = getCart();
+                let existing = cart.find(item => item.id === product.id);
+                if (existing) {
+                    existing.quantity = cartCounter;
+                    if (cartCounter === 0) {
+                        cart = cart.filter(item => item.id !== product.id);
+                        saveCart(cart);
+                        updateCartCount();
 
-        document.getElementById("plus").onclick = function(){
-        cartCounter++;
-        alert(product.name + " has been added to your cart!");
+                        // hmmmmmm
+                        addBtn.innerHTML = "Add to Cart";
+                        addBtn.className =
+                            "bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded cursor-pointer inline-flex items-center justify-center";
 
-        document.getElementById("cart-count").innerText = `View Cart (${cartCounter} items)`;
-        updateCartButton(product);
-    };
+                        // restore click
+                        addToCart(product);
 
-    document.getElementById("minus").onclick = function(){
-        if (cartCounter >= 1){
-            cartCounter--;
-            alert(product.name + " has been removed from your cart!");
-            //console.log(cartCounter);
-            document.getElementById("cart-count").innerText = `View Cart (${cartCounter} items)`;
-            updateCartButton(product);
+                        return;
+                    }
+                }
+                saveCart(cart);
+                updateCartCount();
+                updateCartButton(product);  // render again
+            }
         }
-        if (cartCounter === 0){
-            // Reset
-            document.getElementById("add-to-cart").innerText = "Add to Cart";
-            document.getElementById("add-to-cart").style.backgroundColor = "#007bff";
-            document.getElementById("cart-count").innerText = "View Cart";
-            return;
-        }
-
-        
     };
-
 }
 
-
 // Example usage
-var cardigan = new Product(1, "Cozy Cardigan","Sweater", "Wool Blend", "Female", "Blue with daisy patterns", "S, M, L, XL", 59.99, "A warm and stylish wool blend cardigan perfect for chilly days.", "Products/cardigan.jpg");
+var cardigan = new Product(1, "Cozy Cardigan","Sweater", "Wool Blend", "Female", "Blue with daisy patterns", "S, M, L, XL", 5999, "A warm and stylish wool blend cardigan perfect for chilly days.", "Products/cardigan.jpg");
 
 displayProduct(cardigan);
 addToCart(cardigan);
