@@ -8,6 +8,7 @@ const btn = document.getElementById("aboutBtn");
     arrow.textContent = menu.classList.contains("hidden") ? "▼" : "▲";
   });
 
+<<<<<<< HEAD
 
   // secondary subnav collision + stick logic
 document.addEventListener("DOMContentLoaded", () => {
@@ -97,3 +98,26 @@ document.getElementById("scrollArrow").addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+=======
+//For product description page
+const descriptionDropdown = document.getElementById("description-dropdown");
+const descriptionContent = document.getElementById("description-content");
+const descriptionArrow = document.getElementById("description-arrow");
+
+descriptionDropdown.addEventListener("click", () => {
+  descriptionContent.classList.toggle("hidden");
+  descriptionArrow.textContent = descriptionContent.classList.contains("hidden") ? "▼" : "▲";
+});
+
+//product specifications 
+const specsDropdown = document.getElementById("specification-dropdown");
+const specsContent = document.getElementById("specification-content");
+const specsArrow = document.getElementById("specification-arrow"); 
+specsDropdown.addEventListener("click", () => {
+  specsContent.classList.toggle("hidden");
+  specsArrow.textContent = specsContent.classList.contains("hidden") ? "▼" : "▲";
+});
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof updateCartCount === "function") updateCartCount();
+});
+>>>>>>> 7ad1c9bef8d0e800098e2bbb5e67836d2565995c

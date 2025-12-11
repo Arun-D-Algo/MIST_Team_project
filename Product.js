@@ -142,7 +142,14 @@ function updateCartButton(product){
 }
 
 // Example usage
+<<<<<<< HEAD
 var cardigan = new Product(1, "Cozy Cardigan","Sweater", "Wool Blend", "Female", "Blue with daisy patterns", "S, M, L, XL", 5999, "A warm and stylish wool blend cardigan perfect for chilly days.", "Products/cardigan.png");
 
 displayProduct(cardigan);
 addToCart(cardigan);
+=======
+var cardigan = new Product(1, "Cozy Cardigan","Sweater", "Wool Blend", "Female", "Blue with daisy patterns", "S, M, L, XL", 5999, "A warm and stylish wool blend cardigan perfect for chilly days.", "Products/cardigan.jpg");
+
+displayProduct(cardigan);
+addToCart(cardigan);
+>>>>>>> 7ad1c9bef8d0e800098e2bbb5e67836d2565995c
