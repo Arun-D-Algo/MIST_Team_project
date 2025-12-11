@@ -8,8 +8,6 @@ const btn = document.getElementById("aboutBtn");
     arrow.textContent = menu.classList.contains("hidden") ? "▼" : "▲";
   });
 
-<<<<<<< HEAD
-
   // secondary subnav collision + stick logic
 document.addEventListener("DOMContentLoaded", () => {
   const primary = document.getElementById("navbar"); // header element
@@ -98,7 +96,7 @@ document.getElementById("scrollArrow").addEventListener("click", () => {
     behavior: "smooth"
   });
 });
-=======
+
 //For product description page
 const descriptionDropdown = document.getElementById("description-dropdown");
 const descriptionContent = document.getElementById("description-content");
@@ -120,4 +118,3 @@ specsDropdown.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
     if (typeof updateCartCount === "function") updateCartCount();
 });
->>>>>>> 7ad1c9bef8d0e800098e2bbb5e67836d2565995c
