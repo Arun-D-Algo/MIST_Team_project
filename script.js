@@ -1,20 +1,6 @@
-//For button toggle in About Us section
-const btn = document.getElementById("aboutBtn");
-  const menu = document.getElementById("aboutMenu");
-  const arrow = document.getElementById("arrow");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-    arrow.textContent = menu.classList.contains("hidden") ? "▼" : "▲";
-  });
-
-<<<<<<< HEAD
-
-  // secondary subnav collision + stick logic
 document.addEventListener("DOMContentLoaded", () => {
-  const primary = document.getElementById("navbar"); // header element
+  const primary = document.getElementById("navbar");
   const subnav = document.getElementById("subnav");
-  // placeholder to avoid layout jump when subnav becomes fixed
   let subPlaceholder = null;
 
   function checkSubnav() {
@@ -23,15 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const primaryRect = primary.getBoundingClientRect();
     const subRect = subnav.getBoundingClientRect();
 
-    // if top of subnav hits the bottom of primary nav (collision)
     if (subRect.top <= primaryRect.bottom) {
       if (!subnav.classList.contains("fixed-sub")) {
-        // create placeholder
         subPlaceholder = document.createElement("div");
         subPlaceholder.style.height = `${subRect.height}px`;
         subnav.parentNode.insertBefore(subPlaceholder, subnav.nextSibling);
 
-        // fix subnav under the primary nav
         subnav.classList.add("fixed-sub");
         subnav.style.position = "fixed";
         subnav.style.top = `${primaryRect.height}px`;
@@ -42,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       if (subnav.classList.contains("fixed-sub")) {
-        // restore
         subnav.classList.remove("fixed-sub");
         subnav.style.position = "";
         subnav.style.top = "";
@@ -60,25 +42,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", checkSubnav);
   window.addEventListener("resize", checkSubnav);
-  // initial check in case page loads scrolled
   checkSubnav();
 });
 
+// marquee animation
 document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.getElementById("marqueeWrapper");
   const content = document.getElementById("marqueeContent");
+  if (!wrapper || !content) return;
 
-  // Duplicate content for seamless looping
   const clone = content.cloneNode(true);
   wrapper.appendChild(clone);
 
   let position = 0;
 
   function animateMarquee() {
-    position -= 1; // speed
+    position -= 1;
     wrapper.style.transform = `translateX(${position}px)`;
 
-    // Reset when half scrolled (since content is duplicated)
     if (Math.abs(position) >= content.offsetWidth) {
       position = 0;
     }
@@ -89,35 +70,17 @@ document.addEventListener("DOMContentLoaded", () => {
   animateMarquee();
 });
 
-document.getElementById("scrollArrow").addEventListener("click", () => {
+// banner scroll button
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollArrow = document.getElementById("scrollArrow");
   const banner = document.getElementById("bannerSection");
-  const bannerHeight = banner.offsetHeight;
 
-  window.scrollTo({
-    top: bannerHeight,
-    behavior: "smooth"
+  if (!scrollArrow || !banner) return;
+
+  scrollArrow.addEventListener("click", () => {
+    window.scrollTo({
+      top: banner.offsetHeight,
+      behavior: "smooth"
+    });
   });
 });
-=======
-//For product description page
-const descriptionDropdown = document.getElementById("description-dropdown");
-const descriptionContent = document.getElementById("description-content");
-const descriptionArrow = document.getElementById("description-arrow");
-
-descriptionDropdown.addEventListener("click", () => {
-  descriptionContent.classList.toggle("hidden");
-  descriptionArrow.textContent = descriptionContent.classList.contains("hidden") ? "▼" : "▲";
-});
-
-//product specifications 
-const specsDropdown = document.getElementById("specification-dropdown");
-const specsContent = document.getElementById("specification-content");
-const specsArrow = document.getElementById("specification-arrow"); 
-specsDropdown.addEventListener("click", () => {
-  specsContent.classList.toggle("hidden");
-  specsArrow.textContent = specsContent.classList.contains("hidden") ? "▼" : "▲";
-});
-document.addEventListener("DOMContentLoaded", () => {
-    if (typeof updateCartCount === "function") updateCartCount();
-});
->>>>>>> 7ad1c9bef8d0e800098e2bbb5e67836d2565995c

@@ -15,62 +15,40 @@
 
     <!--navigation bar-->
 
-    <nav class="bg-[#191919] backdrop-blur-md text-black px-6 py-4 shadow flex items-center">
+    <nav class="bg-[#191919] backdrop-blur-md text-black px-6 py-4 shadow flex items-center relative">
       <div class="flex items-center gap-10">
 
         <!--left items of navbar-->
 
-        <a href="Product_Page.html"
-          class="relative group font-serif font-light tracking-wide text-white text-[17px] px-1">
+        <a href="products.html" class="relative group font-serif font-light tracking-wide text-white text-[17px] px-1">
           SHOP
           <span
             class="absolute left-0 -bottom-1 h-[2px] w-full bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
         </a>
 
-        <!--this is a drop down list btw-->
-
-        <div class="relative">
-          <button id="aboutBtn"
-            class="relative group flex items-center gap-1 font-serif font-light tracking-wide text-white text-[17px] px-1">
-            ABOUT US
-            <span id="arrow" class="inline-block transition-transform duration-300 text-white">▼</span>
-
-            <span
-              class="absolute left-0 -bottom-1 h-[2px] w-full bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-          </button>
-
-          <div id="aboutMenu" class="absolute left-0 hidden bg-white shadow-lg rounded-md py-2 w-40 text-black">
-
-            <a href="#our-story" class="relative group block px-4 py-2 hover:bg-gray-100">
-              Our Story
-              <span
-                class="absolute left-0 bottom-0 h-[2px] w-full bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-
-            <a href="#contact" class="relative group block px-4 py-2 hover:bg-gray-100">
-              Contact Us
-              <span
-                class="absolute left-0 bottom-0 h-[2px] w-full bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          </div>
+        <div class="ml-10">
+          <input id="searchInput" type="text" placeholder="Search" class="w-48 px-4 py-2 rounded-full bg-[#2A2A2A]
+         text-sm text-white placeholder-gray-400
+         focus:outline-none focus:ring-2 focus:ring-white/30">
         </div>
       </div>
 
-      <!--center logo placeholder-->
-
-      <div class="mx-auto mr-12">
+      <!--center logo placeholder (true center)-->
+      <div class="absolute left-1/2 -translate-x-1/2">
         <img src="images/logo.png" alt="Logo" class="h-10">
       </div>
 
       <!--cart setup-->
-
       <div class="ml-auto">
         <a href="cart.html"
           class="relative group flex items-center gap-2 font-serif font-light tracking-wide text-white text-[17px] px-1">
           Your Cart
+          <div id="cart-count" class="hidden absolute -top-2 -right-2 bg-white text-black
+           text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+            0
+          </div>
 
           <img src="images/cart.png" class="w-6 h-6 invert">
-
           <span
             class="absolute left-0 -bottom-1 h-[2px] w-full bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
         </a>
@@ -106,7 +84,7 @@
 
       <!--Shop Now Button-->
 
-      <a href="Product_Page.html"
+      <a href="products.html"
         class="px-7 py-3 text-lg font-semibold rounded-md border-2 border-white text-white  bg-black/20 hover:bg-white/10 transition">
         Shop Now
       </a>
@@ -121,7 +99,20 @@
 
   </section>
 
-  <section class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 my-24">
+  <div class="h-20 bg-gradient-to-b from-transparent via-black/50 to-[#191919]"></div>
+
+  <section class="max-w-7xl mx-auto px-6 mt-5 mb-5 text-center">
+    <p class="uppercase tracking-widest text-3x1 text-gray-400 mb-2">
+      Curated For You
+    </p>
+    <h1 class="text-5xl font-serif text-white tracking-wide">
+      Featured Collections
+    </h1>
+  </section>
+
+  <!--cards section-->
+
+  <section class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-3">
 
     <!--discount card-->
 
@@ -136,11 +127,15 @@
         <p class="mt-3 text-lg opacity-90">Selected Fashion Essentials</p>
 
         <!--shop button-->
-
-        <button class="mt-6 bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition">
-          Shop
-        </button>
+        <a href="holiday-deals.html" class="inline-flex items-center gap-2 mt-8 px-8 py-3
+                bg-white text-black rounded-full
+                text-sm font-semibold tracking-wide
+                hover:bg-gray-200 hover:scale-105
+                transition">
+          Shop Deals →
+        </a>
       </div>
+
 
       <!--bg image-->
 
@@ -161,10 +156,15 @@
 
         <!--shop button-->
 
-        <button class="mt-6 bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition">
-          Shop
-        </button>
+        <a href="new-arrivals.html" class="inline-flex items-center gap-2 mt-8 px-8 py-3
+                bg-white text-black rounded-full
+                text-sm font-semibold tracking-wide
+                hover:bg-gray-200 hover:scale-105
+                transition">
+          Shop Deals →
+        </a>
       </div>
+
 
       <!--bg image-->
 
@@ -173,16 +173,21 @@
 
   </section>
 
+  <div class="h-20 bg-gradient-to-b from-transparent via-black/50 to-[#191919]"></div>
+
   <!--category section-->
+
+  <section class="max-w-7xl mx-auto px-6 mb-12 text-center">
+    <p class="uppercase tracking-widest text-3x1 text-gray-400 mb-2">
+      Explore Our Range
+    </p>
+    <h2 class="text-5xl font-serif text-white tracking-wide">
+      Shop by Category
+    </h2>
+  </section>
 
   <section class="w-full bg-[#2A2A2A] py-14 mt-10 my-24">
     <div class="max-w-7xl mx-auto px-6 text-center">
-
-      <!--Heading section-->
-
-      <h2 class="text-white font-serif text-4xl mb-10 tracking-wide">
-        Shop by Category
-      </h2>
 
       <!--category grid-->
 
@@ -190,60 +195,60 @@
 
         <!--cat 1-->
 
-        <a href="tops.html" class="flex flex-col items-center group cursor-pointer">
+        <a href="products.html?category=Tops" class="flex flex-col items-center group cursor-pointer">
           <div class="w-32 h-32 rounded-full bg-[#1E1E1E] flex items-center justify-center overflow-hidden 
                     shadow-lg group-hover:scale-105 transition-transform">
-            <img src="images/cat_tops.png" class="w-20 h-20 object-contain">
+            <img src="images/tops.png" class="w-20 h-20 object-contain">
           </div>
           <p class="text-white mt-3 font-light tracking-wide">Tops</p>
         </a>
 
         <!--cat 2-->
 
-        <a href="jeans.html" class="flex flex-col items-center group cursor-pointer">
+        <a href="products.html?category=Jeans" class="flex flex-col items-center group cursor-pointer">
           <div class="w-32 h-32 rounded-full bg-[#1E1E1E] flex items-center justify-center overflow-hidden 
                     shadow-lg group-hover:scale-105 transition-transform">
-            <img src="images/cat_jeans.png" class="w-20 h-20 object-contain">
+            <img src="images/jeans.png" class="w-20 h-20 object-contain">
           </div>
           <p class="text-white mt-3 font-light tracking-wide">Jeans</p>
         </a>
 
         <!--cat 3-->
 
-        <a href="suits.html" class="flex flex-col items-center group cursor-pointer">
+        <a href="products.html?category=Suits" class="flex flex-col items-center group cursor-pointer">
           <div class="w-32 h-32 rounded-full bg-[#1E1E1E] flex items-center justify-center overflow-hidden 
                     shadow-lg group-hover:scale-105 transition-transform">
-            <img src="images/cat_suits.png" class="w-20 h-20 object-contain">
+            <img src="images/suits.png" class="w-20 h-20 object-contain">
           </div>
           <p class="text-white mt-3 font-light tracking-wide">Suits</p>
         </a>
 
         <!--cat 4-->
 
-        <a href="formal.html" class="flex flex-col items-center group cursor-pointer">
+        <a href="products.html?category=Formal" class="flex flex-col items-center group cursor-pointer">
           <div class="w-32 h-32 rounded-full bg-[#1E1E1E] flex items-center justify-center overflow-hidden 
                     shadow-lg group-hover:scale-105 transition-transform">
-            <img src="images/cat_formal.png" class="w-20 h-20 object-contain">
+            <img src="images/formal.png" class="w-20 h-20 object-contain">
           </div>
           <p class="text-white mt-3 font-light tracking-wide">Formal</p>
         </a>
 
         <!--cat 5-->
 
-        <a href="outerwear.html" class="flex flex-col items-center group cursor-pointer">
+        <a href="products.html?category=Outerwear" class="flex flex-col items-center group cursor-pointer">
           <div class="w-32 h-32 rounded-full bg-[#1E1E1E] flex items-center justify-center overflow-hidden 
                     shadow-lg group-hover:scale-105 transition-transform">
-            <img src="images/cat_outerwear.png" class="w-20 h-20 object-contain">
+            <img src="images/outerwear.png" class="w-20 h-20 object-contain">
           </div>
           <p class="text-white mt-3 font-light tracking-wide">Outerwear</p>
         </a>
 
         <!--cat 6-->
 
-        <a href="accessories.html" class="flex flex-col items-center group cursor-pointer">
+        <a href="products.html?category=Accessories" class="flex flex-col items-center group cursor-pointer">
           <div class="w-32 h-32 rounded-full bg-[#1E1E1E] flex items-center justify-center overflow-hidden 
                     shadow-lg group-hover:scale-105 transition-transform">
-            <img src="images/cat_accessories.png" class="w-20 h-20 object-contain">
+            <img src="images/accessories.png" class="w-20 h-20 object-contain">
           </div>
           <p class="text-white mt-3 font-light tracking-wide">Accessories</p>
         </a>
@@ -251,7 +256,8 @@
       </div>
     </div>
   </section>
-  <br><br>
+
+  <div class="h-20 bg-gradient-to-b from-transparent via-black/50 to-[#191919]"></div>
 
   <!--About Us Section-->
 
@@ -294,6 +300,7 @@
 
   </section>
 
+  <div class="h-px bg-white/10 mb-2"></div>
   <!--help center button-->
 
   <section class="w-full h-[70vh] flex overflow-hidden rounded-xl bg-black text-white my-24">
@@ -324,9 +331,11 @@
     </div>
 
   </section>
+  <div class="h-px bg-white/10 mb-2"></div>
 
+  <!--footer section-->
 
-  <footer class="bg-[#1F1F1F] text-[#D7D7D7] mt-32 pt-20 pb-10">
+  <footer class="bg-[#1F1F1F] text-[#D7D7D7] mt-30 pt-20 pb-10">
 
     <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <div>

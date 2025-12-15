@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>VELARE — Products</title>
+    <title>VELARE — Holiday Deals</title>
     <link rel="icon" type="image/x-icon" href="favicon.png" />
 </head>
 
-<body class="bg-[#191919] text-white">
+<body data-page="deals" class="bg-[#1E1E1E] text-white">
 
     <header id="navbar" class="sticky top-0 left-0 w-full z-50">
 
@@ -57,72 +57,59 @@
         </nav>
     </header>
 
-    <main class="bg-[#1E1E1E]">
+    <!-- BREADCRUMB -->
+    <section class="max-w-7xl mx-auto px-6 pt-4">
+        <nav class="text-sm text-gray-400 flex gap-2">
+            <a href="index.html" class="hover:text-white">Home</a>
+            <span>›</span>
+            <span class="text-gray-200">Holiday Deals</span>
+        </nav>
+    </section>
 
-        <!--link thing-->
+    <!-- HEADER -->
+    <section class="max-w-7xl mx-auto px-6 pt-10">
+        <h1 class="text-5xl font-serif font-bold mb-4">Holiday Deals</h1>
+        <p class="text-gray-300 text-lg">
+            Enjoy up to 30% off on selected premium essentials.
+        </p>
+    </section>
 
-        <section class="max-w-7xl mx-auto px-6 pt-4 pb-2">
-            <nav class="text-3x1 text-gray-400 flex items-center gap-2">
-                <a href="index.html" class="hover:text-white transition">
-                    Home
-                </a>
-                <span class="text-gray-500">›</span>
-                <span class="text-gray-200">
-                    Shop
-                </span>
-            </nav>
-        </section>
 
-        <!--page title-->
+    <!-- SIDEBAR + GRID -->
+    <section class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-4 gap-12">
 
-        <section class="max-w-7xl mx-auto px-6 pt-10">
-            <h1 class="text-5xl font-serif tracking-wide font-bold mb-4">All Products</h1>
-            <p class="text-gray-300 text-lg">Explore our premium collection curated for timeless everyday style.</p>
-        </section>
+        <!-- SIDEBAR -->
+        <aside class="bg-[#202020] p-6 rounded-2xl space-y-12 shadow-md">
 
-        <!--sidebar and product grid-->
-        <section class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-4 gap-12">
-
-            <!--category sidebar-->
-            <aside class="bg-[#202020] p-6 rounded-2xl space-y-12 shadow-md">
-                <div>
-                    <h2 class="text-2xl font-semibold mb-4">Browse</h2>
-                    <div class="h-px bg-white/10 mb-6"></div>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><button class="filter-category hover:text-white" data-category="all">All Products</button>
-                        </li>
-                        <li><button class="filter-category hover:text-white" data-category="Tops">Tops</button></li>
-                        <li><button class="filter-category hover:text-white" data-category="Jeans">Jeans</button></li>
-                        <li><button class="filter-category hover:text-white" data-category="Suits">Suits</button></li>
-                        <li><button class="filter-category hover:text-white" data-category="Suits">Formals</button></li>
-                        <li><button class="filter-category hover:text-white"
-                                data-category="Outerwear">Outerwear</button>
-                        </li>
-                        <li><button class="filter-category hover:text-white"
-                                data-category="Accessories">Accessories</button></li>
-                    </ul>
-                </div>
-
-                <!--pricing range slidebar-->
-
-                <div>
-                    <h2 class="text-2xl font-semibold mb-4">Price</h2>
-                    <div class="h-px bg-white/10 mb-6"></div>
-                    <input type="range" id="priceRange" min="500" max="8000" value="8000" class="w-full">
-                    <p class="mt-2 text-gray-300">Up to: <span id="priceValue">₹8000</span></p>
-                </div>
-            </aside>
-
-            <!--product grid-->
-            <div class="lg:col-span-3">
-                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10"></div>
+            <div>
+                <h2 class="text-xl font-semibold mb-4">Browse</h2>
+                <div class="h-px bg-white/10 mb-6"></div>
+                <ul class="space-y-2 text-gray-300">
+                    <li><button class="filter-category" data-category="all">All</button></li>
+                    <li><button class="filter-category" data-category="Tops">Tops</button></li>
+                    <li><button class="filter-category" data-category="Outerwear">Outerwear</button></li>
+                    <li><button class="filter-category" data-category="Bottoms">Bottoms</button></li>
+                </ul>
             </div>
 
-        </section>
-    </main>
+            <div>
+                <h2 class="text-xl font-semibold mb-4">Price</h2>
+                <div class="h-px bg-white/10 mb-6"></div>
+                <input type="range" id="priceRange" min="500" max="8000" value="8000" class="w-full">
+                <p class="mt-2 text-gray-300">Up to: <span id="priceValue">₹8000</span></p>
+            </div>
 
+        </aside>
 
-    <footer class="bg-[#151515] text-[#D7D7D7] pt-20 pb-10">
+        <!-- PRODUCT GRID -->
+        <div class="lg:col-span-3">
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="bg-[#1F1F1F] text-[#D7D7D7] mt-32 pt-20 pb-10">
 
         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             <div>
@@ -220,20 +207,14 @@
         </div>
 
         <div class="border-t border-gray-300"><!--copyright (remove if yall want idk)-->
-            <div class="max-w-7xl mx-auto px-6 py-4 text-center text-sm bg-[#151515] text-[#D7D7D7]">
+            <div class="max-w-7xl mx-auto px-6 py-4 text-center text-sm bg-[#1F1F1F] text-[#D7D7D7]">
                 © VELARE 2025-2026. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-</body>
-<script src="script.js"></script>
-<script src="Product.js"></script>
-
-</html>
-
-<script src="products-data.js"></script>
-<script src="products-page.js"></script>
+    <script src="products-data.js"></script>
+    <script src="products-page.js"></script>
 
 </body>
 
