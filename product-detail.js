@@ -1,17 +1,17 @@
-// Get product ID from URL
+//to get product id from the URL
 const params = new URLSearchParams(window.location.search);
 const productId = parseInt(params.get("id"));
 
-// Find product
+//finding product
 const product = products.find(p => p.id === productId);
 
-// Fallback
+//fallback
 if (!product) {
   document.body.innerHTML = "<p class='text-center mt-40'>Product not found</p>";
   throw new Error("Invalid product ID");
 }
 
-// Helpers
+//stars
 function generateStars() {
   const count = Math.floor(Math.random() * 2) + 4;
   return "★".repeat(count) + "☆".repeat(5 - count);
@@ -21,7 +21,7 @@ const finalPrice = product.discount
   ? Math.round(product.price * (1 - product.discount / 100))
   : product.price;
 
-// Populate UI
+//things in product card
 document.getElementById("productImage").src = product.image;
 document.getElementById("productName").textContent = product.name;
 document.getElementById("breadcrumbName").textContent = product.name;
@@ -31,14 +31,14 @@ document.getElementById("productPrice").textContent = finalPrice;
 document.getElementById("productDescription").textContent =
   product.subtitle + ". Crafted with attention to detail for everyday elegance.";
 
-// Original price
+//og price
 if (product.discount) {
   const op = document.getElementById("originalPrice");
   op.textContent = product.price;
   op.classList.remove("hidden");
 }
 
-// Badges
+//badges
 const badges = document.getElementById("badges");
 
 if (product.isNew) {
@@ -55,7 +55,7 @@ if (product.discount) {
     </span>`;
 }
 
-// ---------------- REVIEWS ----------------
+//review logic
 let selectedStars = 0;
 
 const stars = document.querySelectorAll("#reviewStars span");
@@ -76,14 +76,14 @@ function updateStars(rating) {
   });
 }
 
-// Click to select
+//clicking to select the stars
 stars.forEach(star => {
   star.addEventListener("click", () => {
     selectedStars = parseInt(star.dataset.star);
     updateStars(selectedStars);
   });
 
-  // Optional hover preview (feels premium)
+  //hovering preview
   star.addEventListener("mouseenter", () => {
     updateStars(parseInt(star.dataset.star));
   });
@@ -93,7 +93,7 @@ stars.forEach(star => {
   });
 });
 
-// Submit review
+//submitting review
 submitReview.addEventListener("click", () => {
   if (!selectedStars || !reviewText.value.trim()) return;
 
@@ -110,13 +110,13 @@ submitReview.addEventListener("click", () => {
 
   reviewsList.prepend(review);
 
-  // Reset
+  //reset section
   reviewText.value = "";
   selectedStars = 0;
   updateStars(0);
 });
 
-// ---------------- ADD TO CART ----------------
+//add to cart logic
 const addToCartBtn = document.getElementById("addToCart");
 
 if (addToCartBtn) {
@@ -142,7 +142,7 @@ if (addToCartBtn) {
   });
 }
 
-// ---------------- BUY NOW ----------------
+//buy now button
 const buyNowBtn = document.getElementById("buyNow");
 
 if (buyNowBtn) {

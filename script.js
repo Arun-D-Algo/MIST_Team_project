@@ -1,4 +1,4 @@
-// Banner scroll button
+//scroll button on banner
 document.addEventListener("DOMContentLoaded", () => {
   const scrollArrow = document.getElementById("scrollArrow");
   const banner = document.getElementById("bannerSection");

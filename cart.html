@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <title>VELARE — Cart</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
 </head>
 
 <body class="bg-[#191919] text-white">
@@ -32,7 +33,7 @@
         </div>
       </div>
 
-      <!--center logo placeholder (true center)-->
+      <!--center logo placeholder-->
       <div class="absolute left-1/2 -translate-x-1/2">
         <img src="images/logo.png" alt="Logo" class="h-10">
       </div>
@@ -55,12 +56,12 @@
     </nav>
   </header>
 
-  <!-- PAGE -->
+  <!--cart header-->
   <main class="max-w-6xl mx-auto px-6 py-16">
 
     <h1 class="text-4xl font-serif mb-10">Your Cart</h1>
 
-    <!-- EMPTY STATE -->
+    <!--empty cart-->
     <div id="empty-cart" class="hidden text-center py-20">
       <p class="text-gray-400 text-lg mb-6">Your cart is currently empty.</p>
       <a href="products.html"
@@ -69,10 +70,10 @@
       </a>
     </div>
 
-    <!-- CART ITEMS -->
+    <!--cart items-->
     <div id="cart-items" class="space-y-6"></div>
 
-    <!-- TOTAL -->
+    <!--total items-->
     <div id="cart-summary" class="hidden mt-12 bg-[#202020] rounded-2xl p-8 flex justify-between items-center">
       <p class="text-xl">Total</p>
       <div class="flex items-center gap-6">

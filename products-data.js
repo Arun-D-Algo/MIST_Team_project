@@ -149,8 +149,6 @@ const products = [
     isNew: false,
     discount: 10
   },
-
-  // ---------- NORMAL ----------
   {
     id: 16,
     name: "Everyday Hoodie",

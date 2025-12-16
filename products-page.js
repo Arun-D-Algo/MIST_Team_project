@@ -1,19 +1,18 @@
-// ---------------- DOM REFERENCES ----------------
 const grid = document.getElementById("productGrid");
 const priceSlider = document.getElementById("priceRange");
 const priceValue = document.getElementById("priceValue");
 const categoryButtons = document.querySelectorAll(".filter-category");
 
-// Page type: all | new | deals
+//page type
 const pageType = document.body.dataset.page;
 
-// ---------------- HELPERS ----------------
+//stars thingy
 function generateStars() {
   const count = Math.floor(Math.random() * 2) + 4; // 4–5 stars
   return "★".repeat(count) + "☆".repeat(5 - count);
 }
 
-// ---------------- RENDER PRODUCTS ----------------
+//product rendering
 function renderProducts(list) {
   grid.innerHTML = "";
 
@@ -78,7 +77,7 @@ function renderProducts(list) {
   });
 }
 
-// ---------------- INITIAL PAGE FILTER ----------------
+//initial page filter
 let pageProducts = products;
 
 if (pageType === "new") {
@@ -89,7 +88,7 @@ if (pageType === "deals") {
   pageProducts = products.filter(p => p.discount > 0);
 }
 
-// ---------------- URL CATEGORY FILTER ----------------
+//url of category filter
 const params = new URLSearchParams(window.location.search);
 const urlCategory = params.get("category");
 
@@ -99,10 +98,10 @@ if (urlCategory) {
   );
 }
 
-// Initial render
+//initial render
 renderProducts(pageProducts);
 
-// ---------------- CATEGORY FILTER ----------------
+// category list
 categoryButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const category = btn.dataset.category;
@@ -117,7 +116,7 @@ categoryButtons.forEach(btn => {
   });
 });
 
-// ---------------- PRICE FILTER ----------------
+//price filter slider
 priceSlider.addEventListener("input", () => {
   const maxPrice = priceSlider.value;
   priceValue.textContent = `₹${maxPrice}`;

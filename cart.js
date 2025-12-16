@@ -1,4 +1,3 @@
-// cart.js
 function renderCart() {
   const cart = getCart();
   const wrap = document.getElementById("cart-items");
